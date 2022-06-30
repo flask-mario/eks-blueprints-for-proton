@@ -1,10 +1,10 @@
 {
-  "deploymentId" : "27e8f41c-ea32-419c-9171-1fa272e4bcba",
+  "deploymentId" : "4cdae48a-5341-43ed-8c0b-125d249b94f3",
   "isResourceDeleted" : false,
   "resourceMetadata" : {
     "arn" : "arn:aws:proton:ap-northeast-1:027500179340:environment/app1-PrePRD",
     "templateArn" : "arn:aws:proton:ap-northeast-1:027500179340:environment-template/eks-mng-karpenter-with-new-vpc",
     "templateMajorVersion" : "1",
-    "templateMinorVersion" : "0"
+    "templateMinorVersion" : "2"
   }
 }
