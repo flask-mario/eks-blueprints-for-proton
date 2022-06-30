@@ -8,5 +8,5 @@ If the resource is no longer accessible within AWS Proton, it may have been dele
 
 variable "aws_region" {
   type    = string
-  default = "us-west-2"
+  default = "ap-northeast-2"
 }
