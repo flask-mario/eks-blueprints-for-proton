@@ -7,12 +7,12 @@ locals {
   environment = "preprod" # Environment area eg., preprod or prod
   zone        = "dev"     # Environment with in one sub_tenant or business unit
 
-  eks_cluster_version = var.environment.inputs.kubernetes_version
-  cluster_name        = var.environment.inputs.cluster_name
+  eks_cluster_version = "1.20"
+  cluster_name        = "${local.zone}-${local.environment}-cluster"
   eks_cluster_id      = "${random_id.this.hex}-${local.cluster_name}"
 
-  vpc_cidr = var.environment.inputs.vpc_cidr
-  vpc_name = var.environment.inputs.cluster_name
+  vpc_cidr = "10.0.0.0/16"
+  vpc_name = "${local.cluster_name}-vpc"
   azs      = slice(data.aws_availability_zones.available.names, 0, 3)
 
   managed_node_groups = {
@@ -31,7 +31,7 @@ locals {
   #---------------------------------------------------------------
   platform_teams = {
     platform-team = {
-      users = ["arn:${data.aws_partition.current.partition}:iam::${data.aws_caller_identity.current.account_id}:user/${var.environment.inputs.user}"]
+      users = ["arn:${data.aws_partition.current.partition}:iam::${data.aws_caller_identity.current.account_id}:user/protondev"]
     }
   }
 

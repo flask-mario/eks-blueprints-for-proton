@@ -42,12 +42,12 @@ module "kubernetes_addons" {
   amazon_eks_kube_proxy_config = local.amazon_eks_kube_proxy_config
 
   # K8s Add-ons
-  enable_aws_for_fluentbit            = var.environment.inputs.aws_for_fluentbit
-  enable_aws_load_balancer_controller = var.environment.inputs.aws_load_balancer_controller
-  enable_cert_manager                 = var.environment.inputs.cert_manager
-  enable_karpenter                    = var.environment.inputs.karpenter
-  enable_metrics_server               = var.environment.inputs.metrics_server
-  enable_vpa                          = var.environment.inputs.vpa
+  enable_aws_for_fluentbit            = true
+  enable_aws_load_balancer_controller = true
+  enable_cert_manager                 = true
+  enable_karpenter                    = true
+  enable_metrics_server               = true
+  enable_vpa                          = true
 
   depends_on = [module.eks_blueprints.managed_node_groups]
 }
