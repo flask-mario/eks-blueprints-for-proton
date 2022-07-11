@@ -31,7 +31,10 @@ locals {
   #---------------------------------------------------------------
   platform_teams = {
     platform-team = {
-      users = ["arn:${data.aws_partition.current.partition}:iam::${data.aws_caller_identity.current.account_id}:user/protondev"]
+      users = [
+        "arn:${data.aws_partition.current.partition}:iam::${data.aws_caller_identity.current.account_id}:user/protondev",
+        data.aws_caller_identity.current.arn
+        ]
     }
   }
 
