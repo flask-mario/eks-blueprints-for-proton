@@ -70,4 +70,26 @@ locals {
     additional_iam_policies  = []
     tags                     = {}
   }
+
+  #---------------------------------------------------------------
+  # ARGOCD ADD-ON APPLICATION
+  #---------------------------------------------------------------
+
+  addon_application = {
+    path               = "chart"
+    repo_url           = "https://github.com/flask-mario/eks-blueprints-add-ons.git"
+    add_on_application = true
+  }
+
+  #---------------------------------------------------------------
+  # ARGOCD WORKLOAD APPLICATION
+  #---------------------------------------------------------------
+
+  workload_application = {
+    path               = "envs/dev"
+    repo_url           = "https://github.com/flask-mario/eks-blueprints-workloads.git"
+    add_on_application = false
+  }
+
+
 }
