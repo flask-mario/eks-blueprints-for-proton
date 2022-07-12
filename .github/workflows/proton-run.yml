@@ -12,7 +12,7 @@ on:
       - '**/.proton/deployment-metadata.json'
   push:
     branches:
-      - main
+      - argocd-feature
     paths:
       - '**/.proton/deployment-metadata.json'
 
@@ -207,11 +207,11 @@ jobs:
       id: tf_plan
       run: terraform plan -var="aws_region=${{ needs.get-deployment-data.outputs.target_region }}"
 
-    # On push to main, build or change infrastructure according to Terraform configuration files
+    # On push to argocd-feature, build or change infrastructure according to Terraform configuration files
     # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
     - name: Terraform Apply
       id: tf_apply
-      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      if: github.ref == 'refs/heads/argocd-feature' && github.event_name == 'push'
       run: terraform apply -auto-approve -var="aws_region=${{ needs.get-deployment-data.outputs.target_region }}"
     
     # If this completes, then the entire workflow has successfully completed
@@ -227,7 +227,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: ${{ needs.get-deployment-data.outputs.environment }}
 
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && needs.get-deployment-data.outputs.is_deleted == 'false'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/argocd-feature' && needs.get-deployment-data.outputs.is_deleted == 'false'
     
     permissions:
       id-token: write
@@ -289,7 +289,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: ${{ needs.get-deployment-data.outputs.environment }}
 
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && needs.get-deployment-data.outputs.is_deleted == 'true'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/argocd-feature' && needs.get-deployment-data.outputs.is_deleted == 'true'
     
     permissions:
       id-token: write
