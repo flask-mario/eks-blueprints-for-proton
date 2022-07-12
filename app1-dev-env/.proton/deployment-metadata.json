@@ -1,6 +1,6 @@
 {
-  "deploymentId" : "37324245-3427-454b-97ec-18d71e88060f",
-  "isResourceDeleted" : false,
+  "deploymentId" : "<proton-resource-deleted>",
+  "isResourceDeleted" : true,
   "resourceMetadata" : {
     "arn" : "arn:aws:proton:ap-northeast-1:027500179340:environment/app1-dev-env",
     "templateArn" : "arn:aws:proton:ap-northeast-1:027500179340:environment-template/eks-mng-karpenter-with-new-vpc",
