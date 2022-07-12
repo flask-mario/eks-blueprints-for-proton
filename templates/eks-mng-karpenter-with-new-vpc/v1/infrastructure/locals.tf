@@ -21,8 +21,8 @@ locals {
       instance_types  = ["m5.xlarge"]
       subnet_ids      = module.aws_vpc.private_subnets
       desired_size    = 3
-      max_size        = 5
-      min_size        = 1
+      max_size        = 3
+      min_size        = 3
     }
   }
 
