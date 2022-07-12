@@ -85,7 +85,7 @@ module "kubernetes_addons" {
   enable_ingress_nginx                = false
   enable_keda                         = false
   enable_metrics_server               = false
-  enable_prometheus                   = false
+  enable_prometheus                   = var.environment.inputs.prometheus
   enable_traefik                      = false
   enable_vpa                          = false
   enable_yunikorn                     = false
