@@ -34,3 +34,7 @@ schema:
           title: "Enable Prometheus Add-On"
           type: boolean
           default: true
+        ingress_nginx:
+          title: "Enable ingress_nginx Add-On"
+          type: boolean
+          default: true          
