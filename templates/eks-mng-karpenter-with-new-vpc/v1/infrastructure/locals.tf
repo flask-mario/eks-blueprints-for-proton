@@ -81,7 +81,7 @@ locals {
   addon_application = {
     path               = "chart"
     repo_url           = "https://github.com/flask-mario/eks-blueprints-add-ons.git"
-    add_on_application = true
+    add_on_application = false
   }
 
   #---------------------------------------------------------------

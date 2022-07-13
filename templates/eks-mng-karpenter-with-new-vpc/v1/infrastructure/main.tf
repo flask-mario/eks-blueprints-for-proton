@@ -55,10 +55,10 @@ module "kubernetes_addons" {
   # ARGO CD ADD-ON
   #---------------------------------------------------------------
   enable_argocd         = true
-  argocd_manage_add_ons = false # Indicates that ArgoCD is responsible for managing/deploying Add-ons.
+  argocd_manage_add_ons = true # Indicates that ArgoCD is responsible for managing/deploying Add-ons.
   argocd_applications = {
     addons    = local.addon_application
-    workloads = local.workload_application
+    #workloads = local.workload_application
   }
 
   argocd_helm_config = {
@@ -73,10 +73,10 @@ module "kubernetes_addons" {
   enable_aws_for_fluentbit            = false
   enable_cert_manager                 = false
   enable_cluster_autoscaler           = false
-  enable_ingress_nginx                = true
+  enable_ingress_nginx                = false
   enable_keda                         = false
   enable_metrics_server               = false
-  enable_prometheus                   = true
+  enable_prometheus                   = false
   enable_traefik                      = false
   enable_vpa                          = false
   enable_yunikorn                     = false
