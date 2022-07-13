@@ -71,7 +71,7 @@ module "kubernetes_addons" {
   # https://aws-ia.github.io/terraform-aws-eks-blueprints/add-ons/
   #---------------------------------------------------------------
 
-  enable_aws_for_fluentbit            = false
+  enable_aws_for_fluentbit            = var.environment.inputs.aws_for_fluentbit
   enable_cert_manager                 = false
   enable_cluster_autoscaler           = false
   enable_ingress_nginx                = var.environment.inputs.ingress_nginx
