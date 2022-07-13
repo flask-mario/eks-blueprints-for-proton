@@ -5,7 +5,7 @@ variable "aws_region" {
 
 variable "tenant" {
   type    = string
-  default = "app01"  # AWS account name or unique id for tenant
+  default = "non-argo"  # AWS account name or unique id for tenant
 }
 
 variable "environment" {
