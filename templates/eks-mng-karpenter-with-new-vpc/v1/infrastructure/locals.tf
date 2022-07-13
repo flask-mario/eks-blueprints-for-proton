@@ -3,26 +3,26 @@ resource "random_id" "this" {
 }
 
 locals {
-  tenant      = "aws001"  # AWS account name or unique id for tenant
-  environment = "preprod" # Environment area eg., preprod or prod
-  zone        = "dev"     # Environment with in one sub_tenant or business unit
+  tenant      = var.tenant
+  environment = var.environment
+  zone        = var.zone
 
-  eks_cluster_version = "1.20"
-  cluster_name        = "${local.zone}-${local.environment}-cluster"
+  eks_cluster_version = var.eks_cluster_version
+  cluster_name        = "${local.tenant}-${local.zone}-cluster"
   eks_cluster_id      = "${random_id.this.hex}-${local.cluster_name}"
 
-  vpc_cidr = "10.0.0.0/16"
+  vpc_cidr = var.vpc_cidr
   vpc_name = "${local.cluster_name}-vpc"
   azs      = slice(data.aws_availability_zones.available.names, 0, 3)
 
   managed_node_groups = {
     mng = {
       node_group_name = "${local.eks_cluster_id}-mng"
-      instance_types  = ["m5.xlarge"]
+      instance_types  = ["m5.large"]
       subnet_ids      = module.aws_vpc.private_subnets
       desired_size    = 3
-      max_size        = 5
-      min_size        = 1
+      max_size        = 3
+      min_size        = 3
     }
   }
 
