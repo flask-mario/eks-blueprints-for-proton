@@ -28,12 +28,8 @@ schema:
         kubernetes_version:
           title: "Kubernetes version"
           type: string
-          enum: ["1.20","1.21","1.22"]
+          enum: ["1.20","1.21"]
           default: "1.21"
-        prometheus:
-          title: "Enable Prometheus Add-On"
-          type: boolean
-          default: true
         ingress_nginx:
           title: "Enable ingress_nginx Add-On"
           type: boolean
