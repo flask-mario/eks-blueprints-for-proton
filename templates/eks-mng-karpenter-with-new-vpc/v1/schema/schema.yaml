@@ -37,4 +37,4 @@ schema:
         aws_for_fluentbit:
           title: "Enable aws_for_fluentbit Add-On"
           type: boolean
-          default: true          
+          default: true
