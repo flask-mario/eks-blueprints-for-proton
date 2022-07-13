@@ -74,7 +74,7 @@ module "kubernetes_addons" {
   enable_aws_for_fluentbit            = false
   enable_cert_manager                 = false
   enable_cluster_autoscaler           = false
-  enable_ingress_nginx                = false
+  enable_ingress_nginx                = var.environment.inputs.ingress_nginx
   enable_keda                         = false
   enable_metrics_server               = false
   enable_prometheus                   = var.environment.inputs.prometheus
