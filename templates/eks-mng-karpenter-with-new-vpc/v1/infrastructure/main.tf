@@ -34,10 +34,12 @@ module "aws_controllers" {
   # Use AWS controllers separately
   # So that it can delete ressources it created from other addons or workloads
   #---------------------------------------------------------------
-
   enable_aws_load_balancer_controller = true
   enable_karpenter                    = false
   enable_aws_for_fluentbit            = false
+  enable_cluster_autoscaler           = false
+  enable_metrics_server               = false
+  enable_prometheus                   = false
 
   depends_on = [module.eks_blueprints.managed_node_groups]
 }
@@ -70,13 +72,9 @@ module "kubernetes_addons" {
   # https://aws-ia.github.io/terraform-aws-eks-blueprints/add-ons/
   #---------------------------------------------------------------
 
-  enable_aws_for_fluentbit            = false
   enable_cert_manager                 = false
-  enable_cluster_autoscaler           = false
   enable_ingress_nginx                = false
   enable_keda                         = false
-  enable_metrics_server               = false
-  enable_prometheus                   = false
   enable_traefik                      = false
   enable_vpa                          = false
   enable_yunikorn                     = false
