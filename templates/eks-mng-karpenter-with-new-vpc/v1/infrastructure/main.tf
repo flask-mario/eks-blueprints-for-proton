@@ -34,20 +34,25 @@ module "aws_controllers" {
   # Use AWS controllers separately
   # So that it can delete ressources it created from other addons or workloads
   #---------------------------------------------------------------
-  enable_aws_load_balancer_controller = true
+  enable_aws_load_balancer_controller = false
   enable_karpenter                    = false
   enable_aws_for_fluentbit            = false
   enable_cluster_autoscaler           = false
   enable_metrics_server               = false
   enable_prometheus                   = false
 
+  # EKS Managed Add-ons
+  enable_amazon_eks_coredns = true
+  amazon_eks_coredns_config = local.amazon_eks_coredns_config
+  enable_amazon_eks_kube_proxy = true
+  amazon_eks_kube_proxy_config = local.amazon_eks_kube_proxy_config
+
   depends_on = [module.eks_blueprints.managed_node_groups]
 }
-
+/*
 #-------------------------------------------------------------------
 # Consume eks-blueprints/kubernetes-addons module
 #-------------------------------------------------------------------
-
 module "kubernetes_addons" {
   source = "github.com/aws-ia/terraform-aws-eks-blueprints?ref=v4.0.4/modules/kubernetes-addons"
 
@@ -80,11 +85,6 @@ module "kubernetes_addons" {
   enable_yunikorn                     = false
   enable_argo_rollouts                = false
 
-  # EKS Managed Add-ons
-  enable_amazon_eks_coredns = true
-  amazon_eks_coredns_config = local.amazon_eks_coredns_config
-  enable_amazon_eks_kube_proxy = true
-  amazon_eks_kube_proxy_config = local.amazon_eks_kube_proxy_config
-
   depends_on = [module.eks_blueprints.managed_node_groups, module.aws_controllers]
 }
+*/
